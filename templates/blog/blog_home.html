@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div id="blog">
+    <h1 class="text-center">blog_home</h1>
+    {% if post_list %}
+        <ul>
+        {% for post in post_list %}
+            <li><a href="{% url 'blog:post_detail' post.id %}">{{ post.subject }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>게시글이 없습니다.</p>
+    {% endif %}
+    <a href="{% url 'blog:post_create' %}" class="btn btn-primary">글쓰기</a>
+</div>
+{% endblock %}
